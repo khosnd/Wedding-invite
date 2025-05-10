@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>دعوتنا لكم</title>
+  <style>
+    body { font-family: Arial; text-align: center; background: #f0f0f0; padding: 50px; }
+    button { padding: 15px 30px; margin: 20px; font-size: 20px; }
+  </style>
+</head>
+<body>
+  <h1>دعوتنا لكم لحضور زفافنا</h1>
+  <p>يوم الثلاثاء 24/6/2025، قاعةأروما – الرياض</p>
+
+  <button onclick="sendResponse('قبول')">قبول الدعوة</button>
+  <button onclick="sendResponse('اعتذار')">الاعتذار عن الدعوة</button>
+
+  <script>
+    // اقرأ اسم الضيف من الرابط
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get('name');
+
+    function sendResponse(status) {
+      fetch('https://script.google.com/macros/s/AKfycbz1MwfnE2zew1toK-QAGZ-iLGeY3bxsvXN0cQ5CMDIkjJGq8q5Hv1-JkHO78xkmH2B6ww/exec', {   // ← هنا بنحط رابط الـ Web App
+        method: 'POST',
+        body: JSON.stringify({ name: guestName, status: status }),
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(response => response.text())
+      .then(data => alert('تم تسجيل ردك، شكراً!'))
+      .catch(error => alert('حصل خطأ، حاول مرة ثانية'));
+    }
+  </script>
+</body>
+</html>
