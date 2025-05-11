@@ -7,7 +7,7 @@
     const name = new URLSearchParams(window.location.search).get("name");
     if (name) {
       const encoded = encodeURIComponent(name);
-      window.location.href = "https://script.google.com/macros/s/AKfycbxZ_cCsuPnBRntp9Fj-JK-X9ujQ5TiXF-6haGvk8w6d6qXrvSNTLmTmMQgtsUimk3lcLw/exec?name=" + encoded;
+     window.location.href = "https://script.google.com/macros/s/AKfycbwHu7kyFyVwMvumUuqGBFPYcODs1H0us38BpjqPUKeHGhKlMp80f8ykf9-fWHpFbdFM4w/exec?name=" + encoded;
     } else {
       document.body.innerText = "لا يوجد اسم بالرابط!";
     }
